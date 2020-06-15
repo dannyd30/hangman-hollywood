@@ -1,0 +1,52 @@
+<div class="content">
+    <h1>Challenge your friend!!</h1>
+    <h6 *ngIf="showRoomError">Please enter a valid room number to join!</h6>
+    <div *ngIf="!startGame">
+        <div class="create-container" *ngIf="roomType === 'create'">
+            <form *ngIf="!showId">
+                <div class="input-container">
+                    <label for="playerName" >Name:</label>
+                    <input type="text" name="playerName" id="playerName" [(ngModel)]="playerName">
+                    <h5 *ngIf="nameError">Please enter a name to begin!</h5>
+                </div>
+
+                <div class="action-container" >
+                    <button (click)="createRoom()">Create Room</button>
+                    <button (click)="goBack()">Go Back!</button>
+                </div>
+            </form>
+
+                <div class="start-container" *ngIf="showId">
+                    <h4>Name: {{playerName}} </h4>
+                    <h4>ROOM ID: <strong>{{roomCode}}</strong></h4>
+                    <button (click)="start()" [disabled]="!readyToStart">Start Game!</button>
+                </div>
+
+                
+            
+        </div>
+        <div class="join-container" *ngIf="roomType === 'join'">
+        <form *ngIf="!readyToStart">
+            <div class="input-container">
+                <label for="playerName">Name:</label>
+                <input type="text" name="playerName" id="playerName">
+            </div>
+            <div class="input-container">
+                <label for="roomCode">Enter the Room Code:</label>
+                <input type="text" name="roomCode" id="roomCode" [(ngModel)]="roomCode">
+            </div>
+
+            <div class="action-container">
+                <button (click)="joinRoom()">Join Room</button>
+                <button (click)="goBack()">Go Back!</button>
+            </div>
+        </form>
+        <div *ngIf="readyToStart">
+            Waiting for Game to Start......!
+        </div>
+    </div>
+</div>
+    <div class="play-area" *ngIf="startGame">
+        <app-play [online]="true" [roomCode]="roomCode" [initialState]="gameState"></app-play>
+    </div>
+</div>

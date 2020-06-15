@@ -1,0 +1,17 @@
+<div class="play-container">
+    <div *ngIf="!timeToGuess && !waitingForWord && !waitingForNextTurn">
+        <app-giver></app-giver>
+    </div>
+    <div *ngIf="timeToGuess && !waitingForWord && !waitingForNextTurn">
+        <app-guesser (nextGame)="onNextGame()"></app-guesser>
+    </div>
+    <div *ngIf="waitingForWord || waitingForNextTurn">
+        <p *ngIf="waitingForNextTurn">
+            Waiting for the other player!!
+        </p>
+
+        <p *ngIf="waitingForWord">
+            Other Player is still thinking...
+        </p>
+    </div>
+</div>

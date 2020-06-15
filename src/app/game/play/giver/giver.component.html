@@ -1,0 +1,13 @@
+<div class="giver-container">
+    <h4>Give a toughie!</h4>
+
+    
+    <div class="input-container">
+        <label for="movieName">Enter a movie name:</label>
+        <input type="text" name="movieName" id="movieName" [(ngModel)]="movieName">
+    </div>
+
+    <button (click)="setMovieName()">Submit</button>
+
+    <p>Note: All the vowels & non-alphabetic character will be displayed. Keep note while deciding on the name.</p>
+</div>

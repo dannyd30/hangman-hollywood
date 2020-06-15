@@ -1,0 +1,53 @@
+
+div.guesser-container{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    div.name-area{
+        .movie-list{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            .movie-char{
+                font-size: 24px;
+                border-bottom: 1px solid #fff;
+            }
+            .hide{
+                opacity: 0;
+            }
+        }
+    }
+
+    div.hollywood-area{
+        ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            li{
+                .left{
+                    text-decoration: line-through;
+                }
+            }
+        }
+    }
+
+    div.alpha-area{
+        ul.alpha-list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            li {
+                button{
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 25px;
+                    &.selected {
+                        text-decoration: line-through;
+                    }
+                }
+            }
+        }
+    }
+}

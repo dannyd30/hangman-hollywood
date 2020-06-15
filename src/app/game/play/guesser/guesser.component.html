@@ -1,0 +1,43 @@
+<div class="guesser-container">
+    <div class="game-play-cont" *ngIf="!gameOver && !showNextTurn">
+    <div class="name-area">
+        <ul class="movie-list">
+            <li *ngFor="let char of movieNameArr; let i=index;">
+                <p class="movie-char" [attr.data-movie-index]="i" *ngIf="char !== null && char.length > 0">{{char}}</p>
+                <p class="movie-char" [attr.data-movie-index]="i"  *ngIf="char !== null && char.length === 0"><span class="hide">{{char.length}}</span></p>
+            </li>
+        </ul>
+    </div>
+    <div class="hollywood-area">
+        <ul>
+            <li *ngFor="let letter of hollywoodArr;let i=index;">
+                <p [attr.data-key]="i+1" [ngClass]="chanceLeft(i) ? 'left' : ''">{{letter}}</p>
+            </li>
+        </ul>
+    </div>
+    <div class="alpha-area">
+        <ul class="alpha-list">
+            <li *ngFor="let alpha of alphabetArr;let i=index;">
+                <button [attr.data-alpha-key]="i" [ngClass]="selected(alpha) ? 'selected' : ''" (click)="alphaSelected(alpha,i)">{{alpha}}</button>
+            </li>
+        </ul>
+    </div>
+    <button (click)="endGame()">END GAME!</button>
+</div>
+<div class="next-turn" *ngIf="showNextTurn && !gameOver">
+    <p>Continue with GAME!</p>
+    <h5>Points Table!</h5>
+    <div class="points-table">
+        <p>Player One: {{playerOnePoints}}</p>
+        <p>Player Two: {{playerTwoPoints}}</p>
+    </div>
+    <button (click)="nextGame()">Next Turn!</button>
+    <button (click)="endGame()">END GAME!</button>
+</div>
+<div class="end-game" *ngIf="gameOver" >
+    <h1>GAME OVER</h1>
+    <p>{{winner}} has won!</p>
+
+    <button (click)="goHome()">Go Home!!</button>
+</div>
+</div>

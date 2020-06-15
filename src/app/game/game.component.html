@@ -1,0 +1,36 @@
+<div class="game-container">
+    <div class="landing" *ngIf="!startGame">
+        <div class="online-game" *ngIf="gameType === 'online'">
+            <h2>Challenge your friend online!</h2>
+            <div class="action-container" *ngIf="!enterGame">
+                <button (click)="setRoomType('create')">Create Room</button>
+                <button (click)="setRoomType('join')">Join Room</button>
+                <button>Go Home!</button>
+            </div>
+            
+            <div class="room-container" *ngIf="enterGame">
+                <app-online [roomType]="roomType" (onlineEvent)="onOnlineEvent($event)"></app-online>
+            </div>
+        </div>
+        <div class="local-game" *ngIf="gameType === 'local'">
+            <h2>Lets do it locally!!</h2>
+            <form >
+                <div class="input-container">
+                    <label for="player1">First Player:</label>
+                    <input type="text" name="player1" id="player1">
+                </div>
+                <div class="input-container">
+                    <label for="player2">Second Player:</label>
+                    <input type="text" name="player2" id="player2">
+                </div>
+                <div class="action-container">
+                    <button (click)="startTheGame()">Start  Game!</button>
+                    <button>Return home!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="play-area" *ngIf="startGame">
+        <app-play [online]="false" [roomCode]="" [initialState]=""></app-play>
+    </div>
+</div>
