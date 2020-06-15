@@ -1,5 +1,7 @@
 # HangmanHollywood
 
+A Simple word guessing game developed with Angular 9 and Socket IO. (Local multiplayer is completed and Socket IO integration is still WIP)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
 ## Development server
